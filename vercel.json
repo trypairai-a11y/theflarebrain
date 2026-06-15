@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm exec prisma generate && pnpm -C apps/web build",
+  "buildCommand": "pnpm --filter @brain/api exec prisma generate && pnpm -C apps/web build",
   "outputDirectory": "apps/web/dist",
   "functions": {
     "api/**/*.ts": {
@@ -9,7 +9,5 @@
       "includeFiles": "apps/api/**,packages/**,infra/**,node_modules/.prisma/**,node_modules/@prisma/client/**"
     }
   },
-  "rewrites": [
-    { "source": "/((?!api).*)", "destination": "/index.html" }
-  ]
+  "rewrites": [{ "source": "/((?!api).*)", "destination": "/index.html" }]
 }
