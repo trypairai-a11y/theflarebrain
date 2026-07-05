@@ -1,7 +1,12 @@
 import type { FastifyPluginAsync } from "fastify";
 import { z } from "zod";
-import { parseUtterance, translateField, simulateBot, type ParsedAction } from "@brain/prompts";
-import type { FieldDefinition } from "@brain/shared";
+import {
+  parseUtterance,
+  translateField,
+  simulateBot,
+  type ParsedAction,
+} from "../../../../packages/prompts/src/index.js";
+import type { FieldDefinition } from "../../../../packages/shared/src/index.js";
 import { appendTurn, getTurns } from "../services/session-memory.js";
 import { createEntry, updateEntry } from "../services/entries.js";
 import { audit, activity } from "../services/audit.js";

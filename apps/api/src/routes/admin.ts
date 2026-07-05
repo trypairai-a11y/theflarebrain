@@ -2,7 +2,7 @@ import type { FastifyPluginAsync } from "fastify";
 import { randomBytes, createHash } from "node:crypto";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { ModuleSchema, Role } from "@brain/shared";
+import { ModuleSchema, Role } from "../../../../packages/shared/src/index.js";
 import { MARKETPLACE } from "../services/marketplace.js";
 
 const CreateTenantBody = z.object({

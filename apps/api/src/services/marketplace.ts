@@ -1,4 +1,4 @@
-import type { FieldDefinition } from "@brain/shared";
+import type { FieldDefinition } from "../../../../packages/shared/src/index.js";
 
 export type MarketplaceModule = {
   slug: string;
@@ -16,13 +16,31 @@ export const MARKETPLACE: MarketplaceModule[] = [
     description: "Physical store locations with hours, governorate, status.",
     fields: [
       { key: "name", label: "Name", type: "text", required: true, localized: true },
-      { key: "governorate", label: "Governorate", type: "select", required: true, localized: false,
-        options: ["Hawalli", "Jahra", "Ahmadi", "Farwaniya", "Al-Asimah"] },
-      { key: "status", label: "Status", type: "select", required: true, localized: false,
-        options: ["Active", "CLOSED", "Temp Closed"] },
+      {
+        key: "governorate",
+        label: "Governorate",
+        type: "select",
+        required: true,
+        localized: false,
+        options: ["Hawalli", "Jahra", "Ahmadi", "Farwaniya", "Al-Asimah"],
+      },
+      {
+        key: "status",
+        label: "Status",
+        type: "select",
+        required: true,
+        localized: false,
+        options: ["Active", "CLOSED", "Temp Closed"],
+      },
       { key: "google_maps_url", label: "Maps", type: "url", required: false, localized: false },
       { key: "hours_regular", label: "Hours", type: "textarea", required: true, localized: false },
-      { key: "hours_ramadan", label: "Ramadan hours", type: "textarea", required: false, localized: false },
+      {
+        key: "hours_ramadan",
+        label: "Ramadan hours",
+        type: "textarea",
+        required: false,
+        localized: false,
+      },
     ],
   },
   {
@@ -32,8 +50,14 @@ export const MARKETPLACE: MarketplaceModule[] = [
     description: "Time-bound offers, bank partnerships, seasonal campaigns.",
     fields: [
       { key: "name", label: "Name", type: "text", required: true, localized: false },
-      { key: "type", label: "Type", type: "select", required: true, localized: false,
-        options: ["Promo", "Seasonal", "Bank"] },
+      {
+        key: "type",
+        label: "Type",
+        type: "select",
+        required: true,
+        localized: false,
+        options: ["Promo", "Seasonal", "Bank"],
+      },
       { key: "message", label: "Offer content", type: "textarea", required: true, localized: true },
       { key: "start_date", label: "Start", type: "date", required: false, localized: false },
       { key: "end_date", label: "End", type: "date", required: false, localized: false },
@@ -57,8 +81,14 @@ export const MARKETPLACE: MarketplaceModule[] = [
     description: "When to hand off to a human and where.",
     fields: [
       { key: "trigger", label: "Trigger", type: "textarea", required: true, localized: false },
-      { key: "channel", label: "Channel", type: "select", required: true, localized: false,
-        options: ["human_chat", "phone", "email", "whatsapp"] },
+      {
+        key: "channel",
+        label: "Channel",
+        type: "select",
+        required: true,
+        localized: false,
+        options: ["human_chat", "phone", "email", "whatsapp"],
+      },
       { key: "webhook_url", label: "Webhook", type: "url", required: false, localized: false },
     ],
   },
@@ -102,8 +132,14 @@ export const MARKETPLACE: MarketplaceModule[] = [
     description: "Bank partners and external programs.",
     fields: [
       { key: "name", label: "Name", type: "text", required: true, localized: false },
-      { key: "type", label: "Type", type: "select", required: true, localized: false,
-        options: ["Bank", "Loyalty", "Corporate", "Other"] },
+      {
+        key: "type",
+        label: "Type",
+        type: "select",
+        required: true,
+        localized: false,
+        options: ["Bank", "Loyalty", "Corporate", "Other"],
+      },
       { key: "notes", label: "Notes", type: "textarea", required: false, localized: true },
     ],
   },

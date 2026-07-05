@@ -3,7 +3,7 @@ import fp from "fastify-plugin";
 import jwtPlugin from "@fastify/jwt";
 import { env } from "../lib/env.js";
 import { unauthorized } from "../lib/errors.js";
-import type { Role } from "@brain/shared";
+import type { Role } from "../../../../packages/shared/src/index.js";
 
 type JwtPayload = {
   sub: string;

@@ -10,7 +10,7 @@ import { nanoid } from "nanoid";
 import { env } from "./lib/env.js";
 import { prisma } from "./lib/prisma.js";
 import { redis } from "./lib/redis.js";
-import { setClaudeObserver } from "@brain/prompts";
+import { setClaudeObserver } from "../../../packages/prompts/src/index.js";
 import { initSentry, Sentry } from "./lib/sentry.js";
 import {
   registry as metricsRegistry,

@@ -7,7 +7,7 @@ import {
   type ClaudeCallMetrics,
 } from "./claude-client.js";
 import { MODELS } from "./models.js";
-import type { FieldDefinition } from "@brain/shared";
+import type { FieldDefinition } from "../../shared/src/index.js";
 
 /**
  * Parser: user utterance + session context → structured action via Anthropic tool use.

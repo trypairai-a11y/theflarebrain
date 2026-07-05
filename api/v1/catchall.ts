@@ -5,9 +5,14 @@
  * media, translate, analytics, kb-health, import, and any newly added
  * Fastify routes are served without per-route Vercel stubs.
  *
- * Demo stubs still in api/v1/ (health.ts, auth/, chat/, entries/, me/,
- * modules.ts, modules-with-counts.ts, activity.ts) take precedence on
- * their own paths and remain authoritative until migrated individually.
+ * Named catchall.ts (not [...path].ts) because Vercel's filesystem
+ * routing for plain api/ functions only matched a single path segment
+ * in production; a vercel.json rewrite of /api/v1/:path* to this file
+ * handles arbitrary depth. Filesystem routes are checked before
+ * rewrites, so the flat demo stubs (health.ts, auth/, me/, modules.ts,
+ * modules-with-counts.ts, activity.ts, entries/search.ts) still take
+ * precedence on their own paths. req.url keeps the original request
+ * path, which is what fastify.inject() needs.
  *
  * Implementation: delegates to fastify.inject() rather than piping the
  * raw HTTP stream. Vercel's @vercel/node runtime parses the body into

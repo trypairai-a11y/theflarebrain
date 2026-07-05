@@ -1,7 +1,7 @@
 import type { FastifyPluginAsync, FastifyRequest } from "fastify";
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
-import { AnalyticsEvent } from "@brain/shared";
+import { AnalyticsEvent } from "../../../../packages/shared/src/index.js";
 import {
   withSingleFlight,
   currentVersion,

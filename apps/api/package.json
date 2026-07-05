@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server.js",
+    "start": "node dist/apps/api/src/server.js",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",

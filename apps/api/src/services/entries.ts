@@ -1,13 +1,12 @@
 import type { Prisma } from "@prisma/client";
-import { buildEntryDataSchema, type FieldDefinition } from "@brain/shared";
+import {
+  buildEntryDataSchema,
+  type FieldDefinition,
+} from "../../../../packages/shared/src/index.js";
 import { badRequest, notFound } from "../lib/errors.js";
 import { bumpVersion } from "./cache.js";
 
-export async function validateData(
-  tx: Prisma.TransactionClient,
-  moduleId: string,
-  data: unknown,
-) {
+export async function validateData(tx: Prisma.TransactionClient, moduleId: string, data: unknown) {
   const mod = await tx.module.findUnique({ where: { id: moduleId } });
   if (!mod) throw notFound("Module not found");
   const fields = mod.fieldDefinitions as unknown as FieldDefinition[];
