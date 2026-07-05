@@ -329,11 +329,26 @@ function add(mod, entries) {
       for (let j = 0; j < headers.length; j++) {
         const price = toNumberKD(r[1 + j]);
         if (price == null) continue;
+        // The column header is only a real duration when it isn't a price/size
+        // tier label. Price-matrix headers ("Price (KD)", "Member Price (KD)",
+        // "Large Size (KD)") must not leak into the duration field — fold the
+        // meaningful qualifier into the plan instead and leave duration blank.
+        const header = headers[j];
+        const qual = /member/i.test(header)
+          ? /non-?member/i.test(header)
+            ? " (Non-Member)"
+            : " (Member)"
+          : /large/i.test(header)
+            ? " (Large)"
+            : /small/i.test(header)
+              ? " (Small)"
+              : "";
+        const isPriceHeader = /price|size/i.test(header);
         entries.push(
           entry({
             tier,
-            plan,
-            duration: headers[j],
+            plan: qual ? plan + qual : plan,
+            duration: isPriceHeader ? "" : header,
             price,
           }),
         );

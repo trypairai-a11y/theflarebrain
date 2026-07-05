@@ -18,6 +18,7 @@ type FieldDef = {
   label: string;
   options?: string[];
   localized?: boolean;
+  required?: boolean;
 };
 type ModuleInfo = { id: string; slug: string; label: string; fieldDefinitions?: FieldDef[] };
 
@@ -795,26 +796,28 @@ export function ModulePage() {
     const emptyData: Record<string, unknown> = {};
     const now = new Date().toISOString();
     const typeByKey = Object.fromEntries((fieldDefs ?? []).map((f) => [f.key, f.type]));
+    // Seed the field shape from an existing row's keys, but never copy its
+    // values — a new entry must start blank. (Dates default to now.)
     if (entries[0] && slug !== "escalation_rules") {
-      const ref = entries[0].data as Record<string, unknown>;
-      for (const k of Object.keys(ref)) {
-        const sample = ref[k];
-        const sampleStr = typeof sample === "string" ? sample : "";
+      for (const k of Object.keys(entries[0].data as Record<string, unknown>)) {
         if (typeByKey[k] === "file") {
           emptyData[k] = null;
-        } else if (DATE_KEY_RE.test(k) || ISO_DATE_RE.test(sampleStr)) {
+        } else if (DATE_KEY_RE.test(k)) {
           emptyData[k] = now;
-        } else if (
-          EN_RE.test(k) ||
-          AR_RE.test(k) ||
-          MSG_EN_KEYS.includes(k) ||
-          MSG_AR_KEYS.includes(k)
-        ) {
-          emptyData[k] = "";
-        } else if (TITLE_KEYS.includes(k)) {
-          emptyData[k] = "";
         } else {
-          emptyData[k] = sample ?? "";
+          emptyData[k] = "";
+        }
+      }
+    } else if (slug !== "escalation_rules" && (fieldDefs?.length ?? 0) > 0) {
+      // Empty module: no existing row to derive the shape from, so seed blank
+      // fields straight from the schema — otherwise the first entry can't be created.
+      for (const f of fieldDefs!) {
+        const keys = f.localized ? [`${f.key}_en`, `${f.key}_ar`] : [f.key];
+        for (const k of keys) {
+          if (f.type === "file") emptyData[k] = null;
+          else if (f.type === "hours" || HOURS_KEY_RE.test(k)) emptyData[k] = [];
+          else if (f.type === "date" || DATE_KEY_RE.test(k)) emptyData[k] = now;
+          else emptyData[k] = "";
         }
       }
     }
@@ -1745,6 +1748,31 @@ function CategoryCombobox({
   );
 }
 
+/**
+ * Turn a save error into something a human can read. Server validation errors
+ * arrive as a JSON-stringified Zod issue array; map each issue to its field
+ * label. Anything else passes through as-is.
+ */
+function humanizeSaveError(err: unknown, labelFor: (k: string) => string): string {
+  const raw = err instanceof Error ? err.message : "Failed to save";
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed
+        .map((issue) => {
+          const key =
+            Array.isArray(issue?.path) && issue.path.length > 0 ? String(issue.path[0]) : "";
+          const label = key ? labelFor(key) : "";
+          return label ? `${label}: ${issue.message}` : issue.message;
+        })
+        .join("; ");
+    }
+  } catch {
+    // not JSON — fall through to raw
+  }
+  return raw;
+}
+
 function EditEntryModal({
   slug,
   entry,
@@ -1773,7 +1801,21 @@ function EditEntryModal({
     [entry],
   );
 
-  const getLabel = useMemo(() => {
+  const requiredKeys = useMemo(() => {
+    const s = new Set<string>();
+    for (const f of fieldDefinitions ?? []) {
+      if (!f.required) continue;
+      if (f.localized) {
+        s.add(`${f.key}_en`);
+        s.add(`${f.key}_ar`);
+      } else {
+        s.add(f.key);
+      }
+    }
+    return s;
+  }, [fieldDefinitions]);
+
+  const baseLabel = useMemo(() => {
     const map: Record<string, string> = {};
     if (fieldDefinitions) {
       for (const f of fieldDefinitions) {
@@ -1787,6 +1829,11 @@ function EditEntryModal({
     }
     return (k: string) => map[k] ?? humanizeKey(k);
   }, [fieldDefinitions]);
+
+  const getLabel = useMemo(
+    () => (k: string) => baseLabel(k) + (requiredKeys.has(k) ? " *" : ""),
+    [baseLabel, requiredKeys],
+  );
   const fieldTypeMap = useMemo(() => {
     const m: Record<string, string> = {};
     for (const f of fieldDefinitions ?? []) m[f.key] = f.type;
@@ -1832,12 +1879,33 @@ function EditEntryModal({
         continue;
       }
       const v = String(draft[k] ?? "");
-      if (DATE_KEY_RE.test(k) && /^\d{4}-\d{2}-\d{2}$/.test(v)) {
+      const fieldType = fieldTypeMap[k] ?? fieldTypeMap[k.replace(/_(en|ar)$/, "")];
+      if (fieldType === "number") {
+        if (v.trim() === "") continue; // omit empty optional number; server enforces required
+        const n = Number(v);
+        data[k] = Number.isNaN(n) ? v : n;
+      } else if (DATE_KEY_RE.test(k) && /^\d{4}-\d{2}-\d{2}$/.test(v)) {
         data[k] = `${v}T00:00:00.000Z`;
       } else {
         data[k] = v;
       }
     }
+
+    // Client-side required check: fail fast with a readable message.
+    const missing = [...requiredKeys].filter((k) => {
+      const val = data[k];
+      if (val == null) return true;
+      if (typeof val === "string") return val.trim() === "";
+      if (Array.isArray(val)) return val.length === 0;
+      if (typeof val === "object") return !(val as FileValue).mediaId;
+      return false;
+    });
+    if (missing.length) {
+      setError(`Please fill in: ${missing.map((k) => baseLabel(k)).join(", ")}`);
+      setBusy(false);
+      return;
+    }
+
     try {
       if (isNew) {
         await api(`/api/v1/entries/${slug}`, {
@@ -1853,7 +1921,7 @@ function EditEntryModal({
       }
       onSaved();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to save");
+      setError(humanizeSaveError(err, baseLabel));
       setBusy(false);
     }
   }

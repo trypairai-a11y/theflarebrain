@@ -24,7 +24,7 @@ export const useModules = create<ModulesState>((set, get) => ({
     if (get().fetched || get().loading) return;
     set({ loading: true });
     try {
-      const mods = await api<Module[]>("/api/v1/modules-with-counts");
+      const mods = await api<Module[]>("/api/v1/modules/with-counts");
       set({ modules: mods, loading: false, fetched: true });
     } catch {
       set({ modules: [], loading: false, fetched: true });

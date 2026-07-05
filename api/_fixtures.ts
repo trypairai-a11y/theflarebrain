@@ -3532,16 +3532,6 @@ export const ENTRIES_BY_SLUG = {
       updatedAt: "2026-04-18T13:44:43.504Z",
     },
     {
-      id: "a12d59b3-b138-576a-9458-4afe36485f52",
-      data: {
-        category: "Book via ClassPro app: apps.apple.com/app/id6456409531",
-        name: "Class",
-        description: "Duration",
-      },
-      status: "active",
-      updatedAt: "2026-04-18T13:44:43.504Z",
-    },
-    {
       id: "2f5f51d5-e68a-50f5-a37f-a610871ece35",
       data: {
         category: "Book via ClassPro app: apps.apple.com/app/id6456409531",
@@ -4376,7 +4366,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "FREEZE POLICY",
         plan: "1 Week",
-        duration: "Price (KD)",
+        duration: "",
         price: 7.5,
       },
       status: "active",
@@ -4387,7 +4377,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "FREEZE POLICY",
         plan: "2 Weeks",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4398,7 +4388,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "FREEZE POLICY",
         plan: "1 Month",
-        duration: "Price (KD)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4408,8 +4398,8 @@ export const ENTRIES_BY_SLUG = {
       id: "ceb721f5-5936-5d2a-aced-e6a5540d3b81",
       data: {
         tier: "LOCKER RENTALS",
-        plan: "1 Month",
-        duration: "Small Size (KD)",
+        plan: "1 Month (Small)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4419,8 +4409,8 @@ export const ENTRIES_BY_SLUG = {
       id: "b4f9c7f8-d64f-5b8c-ab5d-ee03b789dd92",
       data: {
         tier: "LOCKER RENTALS",
-        plan: "1 Month",
-        duration: "Large Size (KD)",
+        plan: "1 Month (Large)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4430,8 +4420,8 @@ export const ENTRIES_BY_SLUG = {
       id: "e073dae5-4635-58cb-aa25-aa83a009e78d",
       data: {
         tier: "LOCKER RENTALS",
-        plan: "3 Months",
-        duration: "Small Size (KD)",
+        plan: "3 Months (Small)",
+        duration: "",
         price: 40,
       },
       status: "active",
@@ -4441,8 +4431,8 @@ export const ENTRIES_BY_SLUG = {
       id: "13428cd1-3506-53a1-aa5f-2024b50a9c74",
       data: {
         tier: "LOCKER RENTALS",
-        plan: "3 Months",
-        duration: "Large Size (KD)",
+        plan: "3 Months (Large)",
+        duration: "",
         price: 45,
       },
       status: "active",
@@ -4452,8 +4442,8 @@ export const ENTRIES_BY_SLUG = {
       id: "efa2e2f0-60af-5073-9819-189cf0dd43de",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "1 Session",
-        duration: "Member Price (KD)",
+        plan: "1 Session (Member)",
+        duration: "",
         price: 12.5,
       },
       status: "active",
@@ -4463,8 +4453,8 @@ export const ENTRIES_BY_SLUG = {
       id: "0fb1fee2-18c0-551f-840b-a9a260420520",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "1 Session",
-        duration: "Non-Member Price (KD)",
+        plan: "1 Session (Non-Member)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4474,8 +4464,8 @@ export const ENTRIES_BY_SLUG = {
       id: "d3e46f81-d12e-5773-8bd6-82ced1b98103",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "6 Sessions",
-        duration: "Member Price (KD)",
+        plan: "6 Sessions (Member)",
+        duration: "",
         price: 69,
       },
       status: "active",
@@ -4485,8 +4475,8 @@ export const ENTRIES_BY_SLUG = {
       id: "4f1152dd-3e9e-5e73-91c4-5733e7f05bd2",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "6 Sessions",
-        duration: "Non-Member Price (KD)",
+        plan: "6 Sessions (Non-Member)",
+        duration: "",
         price: 84,
       },
       status: "active",
@@ -4496,8 +4486,8 @@ export const ENTRIES_BY_SLUG = {
       id: "24051ef7-4053-53a2-b9ed-e9efbb540a47",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "8 Sessions",
-        duration: "Member Price (KD)",
+        plan: "8 Sessions (Member)",
+        duration: "",
         price: 84,
       },
       status: "active",
@@ -4507,8 +4497,8 @@ export const ENTRIES_BY_SLUG = {
       id: "6fae6216-47c8-57a7-a70b-9cbfef695aae",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "8 Sessions",
-        duration: "Non-Member Price (KD)",
+        plan: "8 Sessions (Non-Member)",
+        duration: "",
         price: 100,
       },
       status: "active",
@@ -4518,8 +4508,8 @@ export const ENTRIES_BY_SLUG = {
       id: "22a1feb2-2e5f-53d1-af7c-ebe990440ae0",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "12 Sessions",
-        duration: "Member Price (KD)",
+        plan: "12 Sessions (Member)",
+        duration: "",
         price: 114,
       },
       status: "active",
@@ -4529,8 +4519,8 @@ export const ENTRIES_BY_SLUG = {
       id: "cf42975c-2b1f-537b-b5dc-4ce1d97dfff2",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "12 Sessions",
-        duration: "Non-Member Price (KD)",
+        plan: "12 Sessions (Non-Member)",
+        duration: "",
         price: 130,
       },
       status: "active",
@@ -4540,8 +4530,8 @@ export const ENTRIES_BY_SLUG = {
       id: "925b5fa7-b2a4-5046-9c58-1156e83a467a",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "16 Sessions",
-        duration: "Member Price (KD)",
+        plan: "16 Sessions (Member)",
+        duration: "",
         price: 136,
       },
       status: "active",
@@ -4551,8 +4541,8 @@ export const ENTRIES_BY_SLUG = {
       id: "7d3a55be-ecb5-5ec1-ab0e-cc386d767446",
       data: {
         tier: "SOUL SESSIONS",
-        plan: "16 Sessions",
-        duration: "Non-Member Price (KD)",
+        plan: "16 Sessions (Non-Member)",
+        duration: "",
         price: 160,
       },
       status: "active",
@@ -4563,7 +4553,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BREATHE SESSIONS",
         plan: "1 Session",
-        duration: "Price (KD)",
+        duration: "",
         price: 5,
       },
       status: "active",
@@ -4574,7 +4564,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BREATHE SESSIONS",
         plan: "5 Sessions",
-        duration: "Price (KD)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4585,7 +4575,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Women Athletic L1",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4596,7 +4586,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Women Athletic L2",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4607,7 +4597,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Athletic Level 3",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4618,7 +4608,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Glutes & Core L1",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4629,7 +4619,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Glutes & Core L2",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4640,7 +4630,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Bodybuilding L1",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4651,7 +4641,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Bodybuilding L2",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4662,7 +4652,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Bodybuilding L3",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4673,7 +4663,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Burn At Home",
-        duration: "Price (KD)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4684,7 +4674,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Burn L1",
-        duration: "Price (KD)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4695,7 +4685,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Arms & Core",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4706,7 +4696,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Lifting L1",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4717,7 +4707,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Run Prep Program",
-        duration: "Price (KD)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4728,7 +4718,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "ProRun Program",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4739,7 +4729,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Cardio - Machine",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4750,7 +4740,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Build & Core",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4761,7 +4751,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Mobility & Flexibility",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4772,7 +4762,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Pregnancy Trimester 1",
-        duration: "Price (KD)",
+        duration: "",
         price: 30,
       },
       status: "active",
@@ -4783,7 +4773,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Shoulder Rehab",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4794,7 +4784,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Travel Training",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4805,7 +4795,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Hyrox",
-        duration: "Price (KD)",
+        duration: "",
         price: 20,
       },
       status: "active",
@@ -4816,7 +4806,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Forever Fit",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4827,7 +4817,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Stretching",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4838,7 +4828,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Massage Therapy",
-        duration: "Price (KD)",
+        duration: "",
         price: 15,
       },
       status: "active",
@@ -4849,7 +4839,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Nutrition & Meal Plan",
-        duration: "Price (KD)",
+        duration: "",
         price: 25,
       },
       status: "active",
@@ -4860,7 +4850,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Fix My Injury (1 session)",
-        duration: "Price (KD)",
+        duration: "1 session",
         price: 35,
       },
       status: "active",
@@ -4871,7 +4861,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Customized Program (2 wks)",
-        duration: "Price (KD)",
+        duration: "2 weeks",
         price: 30,
       },
       status: "active",
@@ -4882,7 +4872,7 @@ export const ENTRIES_BY_SLUG = {
       data: {
         tier: "BURN PROGRAMS — QUICK PRICING",
         plan: "Customized Program (4 wks)",
-        duration: "Price (KD)",
+        duration: "4 weeks",
         price: 60,
       },
       status: "active",
